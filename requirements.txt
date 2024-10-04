@@ -20,8 +20,6 @@ attrs==24.2.0
     # via aiohttp
 certifi==2024.8.30
     # via aiogram
-environs==11.0.0
-    # via -r requirements.in
 frozenlist==1.4.1
     # via
     #   aiohttp
@@ -32,21 +30,21 @@ idna==3.10
     # via yarl
 magic-filter==1.0.12
     # via aiogram
-marshmallow==3.22.0
-    # via environs
 multidict==6.1.0
     # via
     #   aiohttp
     #   yarl
-packaging==24.1
-    # via marshmallow
 pydantic==2.9.2
     # via aiogram
 pydantic-core==2.23.4
     # via pydantic
-python-dotenv==1.0.1
-    # via environs
+pypdf2==3.0.1
+    # via -r requirements.in
 sqlalchemy==2.0.35
+    # via
+    #   -r requirements.in
+    #   sqlalchemy-utils
+sqlalchemy-utils==0.41.2
     # via -r requirements.in
 typing-extensions==4.12.2
     # via
