@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from environs import Env
+import json
 
 
 @dataclass
@@ -18,15 +19,20 @@ class TgBot:
 
 
 @dataclass
+class DonationInfo:
+    bills: dict
+
+
+@dataclass
 class Config:
     tg_bot: TgBot
     db: DatabaseConfig
+    donation_info: DonationInfo
 
 
 def load_config(path: str | None = None):
     env: Env = Env()
     env.read_env(path)
-
     return Config(
         tg_bot=TgBot(token=env("BOT_TOKEN")),
         db=DatabaseConfig(
@@ -37,4 +43,5 @@ def load_config(path: str | None = None):
             db_port=env("DB_PORT"),
             db_name=env("DB_NAME"),
         ),
+        donation_info=DonationInfo(bills=json.loads(env("DONATION_INFO")))
     )

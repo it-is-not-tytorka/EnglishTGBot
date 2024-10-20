@@ -20,6 +20,8 @@ attrs==24.2.0
     # via aiohttp
 certifi==2024.8.30
     # via aiogram
+env==0.1.0
+    # via -r requirements.in
 frozenlist==1.4.1
     # via
     #   aiohttp
