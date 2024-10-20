@@ -42,6 +42,7 @@ async def main():
     dp.workflow_data.update({
         'DB_URL': DB_URL,
         'usermanager': UserManager(db_engine=engine, db_session=session),
+        'donation_info': config.donation_info.bills
     })
 
     await dp.start_polling(bot)

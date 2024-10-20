@@ -7,7 +7,7 @@ from aiogram.types import Message, CallbackQuery
 from PyPDF2 import PdfReader
 
 from db.models import UserManager, User
-from lexicon import LEXICON_RU, BLACK_LIST
+from lexicon import LEXICON_RU, BLACK_LIST, donate_message
 from keyboards import create_pagination_keyboard
 
 router = Router()
@@ -97,6 +97,12 @@ async def process_help(message: Message, user: User, usermanager: UserManager):
 async def process_help(message: Message, user: User, usermanager: UserManager):
     usermanager.set_state(user, 'help')
     await message.answer(LEXICON_RU['/help'])
+
+
+@router.message(Command('donate'))
+async def process_help(message: Message, user: User, usermanager: UserManager, donation_info: tuple):
+    usermanager.set_state(user, 'donate')
+    await message.answer(donate_message(donation_info), parse_mode='MarkdownV2')
 
 
 @router.message()
